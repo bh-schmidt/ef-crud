@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29209.152
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 Api", "1 Api", "{9EE03189-18D2-4EA5-9913-411A3F689D86}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 Business", "2 Business", "{6E291B39-059B-4AA6-AC6D-6F2A934FA6BB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 Infra", "3 Infra", "{AC0FFEDF-EF8E-431A-BF0E-B470614BB056}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.1 Data", "3.1 Data", "{21D1D774-19C9-4C00-BDA0-B0BBC7E21EF2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.2 CrossCutting", "3.2 CrossCutting", "{B4420A83-CD46-493F-A93C-A722205D97A0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api", "Api\Api.csproj", "{B270431E-607A-4BBD-B210-A765EC741556}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B270431E-607A-4BBD-B210-A765EC741556}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B270431E-607A-4BBD-B210-A765EC741556}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B270431E-607A-4BBD-B210-A765EC741556}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B270431E-607A-4BBD-B210-A765EC741556}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{21D1D774-19C9-4C00-BDA0-B0BBC7E21EF2} = {AC0FFEDF-EF8E-431A-BF0E-B470614BB056}
+		{B4420A83-CD46-493F-A93C-A722205D97A0} = {AC0FFEDF-EF8E-431A-BF0E-B470614BB056}
+		{B270431E-607A-4BBD-B210-A765EC741556} = {9EE03189-18D2-4EA5-9913-411A3F689D86}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EFC6B50A-DA11-4F78-A67B-5A76B5B1E408}
+	EndGlobalSection
+EndGlobal
