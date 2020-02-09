@@ -9,6 +9,11 @@ namespace Api.Controllers
     [Route("api/[controller]")]
     public abstract class BaseController : ControllerBase
     {
+        protected IActionResult CreateResult()
+        {
+            return StatusCode(HttpStatusCode.OK.GetHashCode());
+        }
+
         protected IActionResult CreateResult(object model)
         {
             return StatusCode(HttpStatusCode.OK.GetHashCode(), model);
