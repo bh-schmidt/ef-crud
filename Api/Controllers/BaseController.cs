@@ -1,6 +1,5 @@
 ﻿using Api.Attributes;
 using Microsoft.AspNetCore.Mvc;
-using System.Net;
 
 namespace Api.Controllers
 {
@@ -9,14 +8,14 @@ namespace Api.Controllers
     [Route("api/[controller]")]
     public abstract class BaseController : ControllerBase
     {
-        protected IActionResult CreateResult()
+        protected static IActionResult CreateResult()
         {
-            return StatusCode(HttpStatusCode.OK.GetHashCode());
+            return new OkResult();
         }
 
-        protected IActionResult CreateResult(object model)
+        protected static IActionResult CreateObjectResult(object value)
         {
-            return StatusCode(HttpStatusCode.OK.GetHashCode(), model);
+            return new OkObjectResult(value);
         }
     }
 }

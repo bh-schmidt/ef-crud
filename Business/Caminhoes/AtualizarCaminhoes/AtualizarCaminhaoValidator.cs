@@ -1,7 +1,6 @@
 ﻿using Data.Repositories.Caminhoes;
 using FluentValidation;
 using Models.Caminhoes;
-using System;
 using System.Threading.Tasks;
 using Utils.Extensions;
 

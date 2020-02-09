@@ -10,23 +10,23 @@ namespace Api.Controllers.Caminhoes
 {
     public class CaminhoesController : BaseController
     {
-        private readonly IInserirCaminhao inserirCaminhao;
         private readonly IObterTodosOsCaminhoes obterTodosOsCaminhoes;
-        private readonly IAtualizarCaminhao atualizarCaminhao;
         private readonly IObterCaminhaoPorId obterCaminhaoPorId;
+        private readonly IInserirCaminhao inserirCaminhao;
+        private readonly IAtualizarCaminhao atualizarCaminhao;
         private readonly IExcluirCaminhao excluirCaminhao;
 
         public CaminhoesController(
-            IInserirCaminhao inserirCaminhao,
             IObterTodosOsCaminhoes obterTodosOsCaminhoes,
-            IAtualizarCaminhao atualizarCaminhao,
             IObterCaminhaoPorId obterCaminhaoPorId,
+            IInserirCaminhao inserirCaminhao,
+            IAtualizarCaminhao atualizarCaminhao,
             IExcluirCaminhao excluirCaminhao)
         {
-            this.inserirCaminhao = inserirCaminhao;
             this.obterTodosOsCaminhoes = obterTodosOsCaminhoes;
-            this.atualizarCaminhao = atualizarCaminhao;
             this.obterCaminhaoPorId = obterCaminhaoPorId;
+            this.inserirCaminhao = inserirCaminhao;
+            this.atualizarCaminhao = atualizarCaminhao;
             this.excluirCaminhao = excluirCaminhao;
         }
 
@@ -35,7 +35,7 @@ namespace Api.Controllers.Caminhoes
         {
             var caminhoes = await obterTodosOsCaminhoes.ObterTodos();
 
-            return CreateResult(caminhoes);
+            return CreateObjectResult(caminhoes);
         }
 
         [HttpGet]
@@ -44,7 +44,7 @@ namespace Api.Controllers.Caminhoes
         {
             var caminhao = await obterCaminhaoPorId.ObterPor(id);
 
-            return CreateResult(caminhao);
+            return CreateObjectResult(caminhao);
         }
 
         [HttpPost]
@@ -52,7 +52,7 @@ namespace Api.Controllers.Caminhoes
         {
             var resultado = await inserirCaminhao.Inserir(caminhao);
 
-            return CreateResult(resultado);
+            return CreateObjectResult(resultado);
         }
 
         [HttpPut]
@@ -60,7 +60,7 @@ namespace Api.Controllers.Caminhoes
         {
             var resultado = await atualizarCaminhao.Atualizar(caminhao);
 
-            return CreateResult(resultado);
+            return CreateObjectResult(resultado);
         }
 
         [HttpDelete]

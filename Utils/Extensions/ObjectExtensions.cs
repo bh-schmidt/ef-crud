@@ -8,5 +8,10 @@ namespace Utils.Extensions
         {
             return value == null;
         }
+
+        public static TObject CastTo<TObject>(this object value)
+        {
+            return (TObject)value;
+        }
     }
 }
