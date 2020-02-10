@@ -41,7 +41,7 @@ namespace Business.Caminhoes.AtualizarCaminhoes
 
         private async Task<Caminhao> ProcessarAtualizacao(Caminhao caminhao)
         {
-            caminhao.Validar(atualizarCaminhaoValidator);
+            await caminhao.ValidarAsync(atualizarCaminhaoValidator);
 
             if (caminhao.Valid)
                 await caminhaoRepository.AtualizarTudo(caminhao);

@@ -1,5 +1,6 @@
 ﻿using Data.Context;
 using Data.Repositories.Caminhoes;
+using Models.Caminhoes;
 using System;
 using System.Threading.Tasks;
 
@@ -9,22 +10,27 @@ namespace Business.Caminhoes.ExcluirCaminhoes
     {
         private readonly IUnitOfWork unitOfWork;
         private readonly ICaminhaoRepository caminhaoRepository;
+        private readonly IExcluirCaminhaoValidator excluirCaminhaoValidator;
 
         public ExcluirCaminhao(
             IUnitOfWork unitOfWork, 
-            ICaminhaoRepository caminhaoRepository)
+            ICaminhaoRepository caminhaoRepository,
+            IExcluirCaminhaoValidator excluirCaminhaoValidator)
         {
             this.unitOfWork = unitOfWork;
             this.caminhaoRepository = caminhaoRepository;
+            this.excluirCaminhaoValidator = excluirCaminhaoValidator;
         }
 
-        public async Task Excluir(long id)
+        public async Task<Caminhao> Excluir(long id)
         {
             try
             {
                 await unitOfWork.BeginAsync();
-                await ProcessarExclusao(id);
+                var caminhao = await ProcessarExclusao(id);
                 await unitOfWork.CommitAsync();
+
+                return caminhao;
             }
             catch (Exception ex)
             {
@@ -33,9 +39,16 @@ namespace Business.Caminhoes.ExcluirCaminhoes
             }
         }
 
-        public async Task ProcessarExclusao(long id)
+        public async Task<Caminhao> ProcessarExclusao(long id)
         {
-            await caminhaoRepository.ExcluirPor(id);
+            var caminhao = new Caminhao() {Id = id};
+
+            await caminhao.ValidarAsync(excluirCaminhaoValidator);
+
+            if(caminhao.Valid)
+                await caminhaoRepository.Excluir(caminhao);
+
+            return caminhao;
         }
     }
 }

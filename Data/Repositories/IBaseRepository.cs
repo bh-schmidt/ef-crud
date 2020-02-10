@@ -11,7 +11,7 @@ namespace Data.Repositories
         public Task<TModel> ObterPor(long id);
         public Task Inserir(TModel model);
         public Task AtualizarTudo(TModel model);
-        public Task ExcluirPor(long id);
-        public Task<bool> ModelExistente(long id);
+        public Task Excluir(TModel model);
+        public Task<bool> IdExistente(long id);
     }
 }

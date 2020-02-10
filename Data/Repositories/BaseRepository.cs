@@ -38,18 +38,13 @@ namespace Data.Repositories
             await Context().SaveChangesAsync();
         }
 
-        public async Task ExcluirPor(long id)
+        public async Task Excluir(TModel model)
         {
-            var modelParaExcluir = await Context().Set<TModel>().FirstOrDefaultAsync(m => m.Id == id);
-
-            if (modelParaExcluir.IsNull())
-                return;
-
-            Context().Set<TModel>().Remove(modelParaExcluir);
+            Context().Set<TModel>().Remove(model);
             await Context().SaveChangesAsync();
         }
 
-        public async Task<bool> ModelExistente(long id)
+        public async Task<bool> IdExistente(long id)
         {
             return await Context().Set<TModel>().AnyAsync(m => m.Id == id);
         }

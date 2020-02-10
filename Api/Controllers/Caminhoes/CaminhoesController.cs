@@ -67,9 +67,9 @@ namespace Api.Controllers.Caminhoes
         [Route("{id}")]
         public async Task<IActionResult> Exluir(long id)
         {
-            await excluirCaminhao.Excluir(id);
+            var resultado = await excluirCaminhao.Excluir(id);
 
-            return CreateResult();
+            return CreateObjectResult(resultado);
         }
     }
 }

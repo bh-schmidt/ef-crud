@@ -6,15 +6,19 @@ namespace Business.Caminhoes
 {
     public class InserirCaminhaoValidator : AbstractValidator<Caminhao>, IInserirCaminhaoValidator
     {
-        public InserirCaminhaoValidator()
+        public InserirCaminhaoValidator(
+            IValidarModelo validarModelo,
+            IValidarAnoFabricacao validarAnoFabricacao,
+            IValidarAnoModelo validarAnoModelo)
         {
             RuleFor(c => c.Id)
                 .Null()
-                .WithMessage("O id deve ser null.");
+                .WithMessage("O id deve ser null.")
+                .WithErrorCode("InserirCaminhaoValidator01");
 
-            this.ValidarModelo();
-            this.ValidarAnoFabricacao();
-            this.ValidarAnoModelo();
+            validarModelo.AdicionarValidacao(this);
+            validarAnoFabricacao.AdicionarValidacao(this);
+            validarAnoModelo.AdicionarValidacao(this);
         }
     }
 }

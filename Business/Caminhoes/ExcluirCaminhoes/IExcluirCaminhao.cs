@@ -1,9 +1,10 @@
-﻿using System.Threading.Tasks;
+﻿using Models.Caminhoes;
+using System.Threading.Tasks;
 
 namespace Business.Caminhoes.ExcluirCaminhoes
 {
     public interface IExcluirCaminhao
     {
-        public Task Excluir(long id);
+        public Task<Caminhao> Excluir(long id);
     }
 }
