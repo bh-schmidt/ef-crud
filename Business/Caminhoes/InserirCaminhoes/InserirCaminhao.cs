@@ -27,8 +27,16 @@ namespace Business.Caminhoes.InserirCaminhoes
             try
             {
                 await unitOfWork.BeginAsync();
+
                 var resultado = await ProcessarInsercao(caminhao);
-                await unitOfWork.CommitAsync();
+
+                if (caminhao.Valid)
+                {
+                    await unitOfWork.CommitAsync();
+                    return caminhao;
+                }
+
+                await unitOfWork.RollbackAsync();
 
                 return resultado;
             }
@@ -41,7 +49,7 @@ namespace Business.Caminhoes.InserirCaminhoes
 
         private async Task<Caminhao> ProcessarInsercao(Caminhao caminhao)
         {
-            caminhao.Validar(caminhaoValidator);
+            await caminhao.ValidarAsync(caminhaoValidator);
 
             if (caminhao.Valid)
                 await caminhaoRepository.Inserir(caminhao);

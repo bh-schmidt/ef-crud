@@ -40,9 +40,11 @@ namespace Tests.Business.Caminhoes.AtualizarCaminhoes.AtualizarCaminhaoTests
             await atualizarCaminhao.Atualizar(caminhao);
 
             unitOfWork.Verify(u => u.BeginAsync(), Times.Once);
+            unitOfWork.Verify(u => u.CommitAsync(), Times.Once);
+            unitOfWork.Verify(u => u.RollbackAsync(), Times.Never);
+
             atualizarCaminhaoValidator.Verify(u => u.ValidateAsync(caminhao, default), Times.Once);
             caminhaoRepository.Verify(c => c.AtualizarTudo(caminhao), Times.Once);
-            unitOfWork.Verify(u => u.CommitAsync(), Times.Once);
         }
 
         [Test]
@@ -56,9 +58,11 @@ namespace Tests.Business.Caminhoes.AtualizarCaminhoes.AtualizarCaminhaoTests
             await atualizarCaminhao.Atualizar(caminhao);
 
             unitOfWork.Verify(u => u.BeginAsync(), Times.Once);
+            unitOfWork.Verify(u => u.CommitAsync(), Times.Never);
+            unitOfWork.Verify(u => u.RollbackAsync(), Times.Once);
+
             atualizarCaminhaoValidator.Verify(u => u.ValidateAsync(caminhao, default), Times.Once);
             caminhaoRepository.Verify(c => c.AtualizarTudo(caminhao), Times.Never);
-            unitOfWork.Verify(u => u.CommitAsync(), Times.Once);
         }
 
         [Test]
@@ -75,9 +79,11 @@ namespace Tests.Business.Caminhoes.AtualizarCaminhoes.AtualizarCaminhaoTests
             Assert.CatchAsync(() => atualizarCaminhao.Atualizar(caminhao));
 
             unitOfWork.Verify(u => u.BeginAsync(), Times.Once);
+            unitOfWork.Verify(u => u.CommitAsync(), Times.Never);
+            unitOfWork.Verify(u => u.RollbackAsync(), Times.Once);
+
             atualizarCaminhaoValidator.Verify(u => u.ValidateAsync(caminhao, default), Times.Once);
             caminhaoRepository.Verify(c => c.AtualizarTudo(caminhao), Times.Once);
-            unitOfWork.Verify(u => u.CommitAsync(), Times.Never);
         }
     }
 }

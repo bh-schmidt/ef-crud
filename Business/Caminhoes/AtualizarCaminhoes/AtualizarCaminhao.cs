@@ -27,8 +27,16 @@ namespace Business.Caminhoes.AtualizarCaminhoes
             try
             {
                 await unitOfWork.BeginAsync();
+                
                 var resultado = await ProcessarAtualizacao(caminhao);
-                await unitOfWork.CommitAsync();
+                
+                if (caminhao.Valid)
+                {
+                    await unitOfWork.CommitAsync();
+                    return caminhao;
+                }
+
+                await unitOfWork.RollbackAsync();
 
                 return resultado;
             }

@@ -13,7 +13,7 @@ namespace Business.Caminhoes.ExcluirCaminhoes
         private readonly IExcluirCaminhaoValidator excluirCaminhaoValidator;
 
         public ExcluirCaminhao(
-            IUnitOfWork unitOfWork, 
+            IUnitOfWork unitOfWork,
             ICaminhaoRepository caminhaoRepository,
             IExcluirCaminhaoValidator excluirCaminhaoValidator)
         {
@@ -27,8 +27,16 @@ namespace Business.Caminhoes.ExcluirCaminhoes
             try
             {
                 await unitOfWork.BeginAsync();
+
                 var caminhao = await ProcessarExclusao(id);
-                await unitOfWork.CommitAsync();
+
+                if (caminhao.Valid)
+                {
+                    await unitOfWork.CommitAsync();
+                    return caminhao;
+                }
+
+                await unitOfWork.RollbackAsync();
 
                 return caminhao;
             }
@@ -41,11 +49,11 @@ namespace Business.Caminhoes.ExcluirCaminhoes
 
         public async Task<Caminhao> ProcessarExclusao(long id)
         {
-            var caminhao = new Caminhao() {Id = id};
+            var caminhao = new Caminhao() { Id = id };
 
             await caminhao.ValidarAsync(excluirCaminhaoValidator);
 
-            if(caminhao.Valid)
+            if (caminhao.Valid)
                 await caminhaoRepository.Excluir(caminhao);
 
             return caminhao;
