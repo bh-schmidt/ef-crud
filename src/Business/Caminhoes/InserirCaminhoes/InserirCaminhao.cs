@@ -40,16 +40,16 @@ namespace Business.Caminhoes.InserirCaminhoes
 
                 return resultado;
             }
-            catch (Exception ex)
+            catch
             {
                 await unitOfWork.RollbackAsync();
-                throw ex;
+                throw;
             }
         }
 
         private async Task<Caminhao> ProcessarInsercao(Caminhao caminhao)
         {
-            await caminhao.ValidarAsync(caminhaoValidator);
+            caminhao.Validar(caminhaoValidator);
 
             if (caminhao.Valid)
                 await caminhaoRepository.Inserir(caminhao);

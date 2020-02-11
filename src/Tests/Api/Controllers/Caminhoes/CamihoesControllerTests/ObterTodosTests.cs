@@ -14,6 +14,7 @@ namespace Tests.Api.Controllers.Caminhoes.CamihoesControllerTests
 {
     public class ObterTodosTests : BaseCaminhoesControllerTests
     {
+        [Test]
         public async Task Vai_retornar_os_caminhoes()
         {
             var caminhoes = Enumerable.Repeat(new Caminhao(), 10);

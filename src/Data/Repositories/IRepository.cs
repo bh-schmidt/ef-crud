@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace Data.Repositories
 {
-    public interface IBaseRepository<TModel>
+    public interface IRepository<TModel>
         where TModel : BaseModel
     {
         public Task<IEnumerable<TModel>> ObterTodos();

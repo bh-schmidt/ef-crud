@@ -1,0 +1,16 @@
+B
+9C:\workspace\ef-crud\src\Data\Context\ConfigureContext.csutf-8?
+6C:\workspace\ef-crud\src\Data\Context\EfCrudContext.csutf-8=
+4C:\workspace\ef-crud\src\Data\Context\IUnitOfWork.csutf-8<
+3C:\workspace\ef-crud\src\Data\Context\UnitOfWork.csutf-8>
+5C:\workspace\ef-crud\src\Data\Mapping\BaseModelMap.csutf-8Q
+HC:\workspace\ef-crud\src\Data\Migrations\20200208111549_InitialCreate.csutf-8\
+QC:\workspace\ef-crud\src\Data\Migrations\20200208111549_InitialCreate.Designer.csutf-8Q
+FC:\workspace\ef-crud\src\Data\Migrations\EfCrudContextModelSnapshot.csutf-8S
+JC:\workspace\ef-crud\src\Data\Repositories\Caminhoes\CaminhaoRepository.csutf-8T
+KC:\workspace\ef-crud\src\Data\Repositories\Caminhoes\ICaminhaoRepository.csutf-8B
+9C:\workspace\ef-crud\src\Data\Repositories\IRepository.csutf-8A
+8C:\workspace\ef-crud\src\Data\Repositories\Repository.csutf-84
++C:\workspace\ef-crud\src\Data\SampleData.csutf-8[
+PC:\Users\re4de\AppData\Local\Temp\.NETCoreApp,Version=v3.1.AssemblyAttributes.csutf-8U
+JC:\workspace\ef-crud\src\Data\obj\Debug\netcoreapp3.1\Data.AssemblyInfo.csutf-8

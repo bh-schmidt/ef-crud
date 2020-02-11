@@ -1,0 +1,9 @@
+F
+=C:\workspace\ef-crud\src\Api\Attributes\ExceptionAttribute.csutf-8C
+:C:\workspace\ef-crud\src\Api\Controllers\BaseController.csutf-8R
+IC:\workspace\ef-crud\src\Api\Controllers\Caminhoes\CaminhoesController.csutf-80
+'C:\workspace\ef-crud\src\Api\Program.csutf-80
+'C:\workspace\ef-crud\src\Api\Startup.csutf-8[
+PC:\Users\re4de\AppData\Local\Temp\.NETCoreApp,Version=v3.1.AssemblyAttributes.csutf-8f
+[C:\workspace\ef-crud\src\Api\obj\Debug\netcoreapp3.1\Api.MvcApplicationPartsAssemblyInfo.csutf-8S
+HC:\workspace\ef-crud\src\Api\obj\Debug\netcoreapp3.1\Api.AssemblyInfo.csutf-8

@@ -2,7 +2,7 @@
 
 namespace Data.Repositories.Caminhoes
 {
-    public interface ICaminhaoRepository : IBaseRepository<Caminhao>
+    public interface ICaminhaoRepository : IRepository<Caminhao>
     {
     }
 }

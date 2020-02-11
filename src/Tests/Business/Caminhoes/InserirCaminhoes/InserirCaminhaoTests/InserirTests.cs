@@ -35,8 +35,8 @@ namespace Tests.Business.Caminhoes.InserirCaminhoes.InserirCaminhaoTests
         {
             var caminhao = new Caminhao();
 
-            inserirCaminhaoValidator.Setup(i => i.ValidateAsync(caminhao, default))
-                .ReturnsAsync(ValidResult());
+            inserirCaminhaoValidator.Setup(i => i.Validate(caminhao))
+                .Returns(ValidResult());
 
             await inserirCaminhao.Inserir(caminhao);
 
@@ -44,7 +44,7 @@ namespace Tests.Business.Caminhoes.InserirCaminhoes.InserirCaminhaoTests
             unitOfWork.Verify(u => u.CommitAsync(), Times.Once);
             unitOfWork.Verify(u => u.RollbackAsync(), Times.Never);
 
-            inserirCaminhaoValidator.Verify(e => e.ValidateAsync(caminhao, default), Times.Once);
+            inserirCaminhaoValidator.Verify(e => e.Validate(caminhao), Times.Once);
             caminhaoRepository.Verify(c => c.Inserir(caminhao), Times.Once);
         }
 
@@ -53,8 +53,8 @@ namespace Tests.Business.Caminhoes.InserirCaminhoes.InserirCaminhaoTests
         {
             var caminhao = new Caminhao();
 
-            inserirCaminhaoValidator.Setup(i => i.ValidateAsync(caminhao, default))
-                .ReturnsAsync(InvalidResult());
+            inserirCaminhaoValidator.Setup(i => i.Validate(caminhao))
+                .Returns(InvalidResult());
 
             await inserirCaminhao.Inserir(caminhao);
 
@@ -62,7 +62,7 @@ namespace Tests.Business.Caminhoes.InserirCaminhoes.InserirCaminhaoTests
             unitOfWork.Verify(u => u.CommitAsync(), Times.Never);
             unitOfWork.Verify(u => u.RollbackAsync(), Times.Once);
 
-            inserirCaminhaoValidator.Verify(e => e.ValidateAsync(caminhao, default), Times.Once);
+            inserirCaminhaoValidator.Verify(e => e.Validate(caminhao), Times.Once);
             caminhaoRepository.Verify(c => c.Inserir(caminhao), Times.Never);
         }
 
@@ -71,7 +71,7 @@ namespace Tests.Business.Caminhoes.InserirCaminhoes.InserirCaminhaoTests
         {
             var caminhao = new Caminhao();
 
-            inserirCaminhaoValidator.Setup(i => i.ValidateAsync(caminhao, default))
+            inserirCaminhaoValidator.Setup(i => i.Validate(caminhao))
                 .Throws(new Exception());
 
             Assert.CatchAsync(() => inserirCaminhao.Inserir(caminhao));
@@ -80,7 +80,7 @@ namespace Tests.Business.Caminhoes.InserirCaminhoes.InserirCaminhaoTests
             unitOfWork.Verify(u => u.CommitAsync(), Times.Never);
             unitOfWork.Verify(u => u.RollbackAsync(), Times.Once);
 
-            inserirCaminhaoValidator.Verify(e => e.ValidateAsync(caminhao, default), Times.Once);
+            inserirCaminhaoValidator.Verify(e => e.Validate(caminhao), Times.Once);
             caminhaoRepository.Verify(c => c.Inserir(caminhao), Times.Never);
         }
     }

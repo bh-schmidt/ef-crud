@@ -2,23 +2,21 @@
 using Microsoft.EntityFrameworkCore;
 using Models;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using Utils.Extensions;
 
 namespace Data.Repositories
 {
-    public abstract class BaseRepository<TModel> : IBaseRepository<TModel>
+    public abstract class Repository<TModel> : IRepository<TModel>
         where TModel : BaseModel
     {
         private readonly IUnitOfWork unitOfWork;
 
-        protected BaseRepository(IUnitOfWork unitOfWork)
+        protected Repository(IUnitOfWork unitOfWork)
         {
             this.unitOfWork = unitOfWork;
         }
 
-        protected EfCrudContext Context() => unitOfWork.Context();
+        protected DbContext Context() => unitOfWork.Context();
 
         public async Task<IEnumerable<TModel>> ObterTodos() =>
             await Context().Set<TModel>().ToArrayAsync();

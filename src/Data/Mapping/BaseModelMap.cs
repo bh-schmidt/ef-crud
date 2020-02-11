@@ -9,10 +9,7 @@ namespace Data.Mapping
     {
         public static void Map(ModelBuilder modelBuilder)
         {
-            var assembly = Assembly.GetAssembly(typeof(BaseModel));
-
-            if (assembly is null)
-                return;
+            var assembly = Assembly.GetAssembly(typeof(BaseModel))!;
 
             var classes = assembly.GetTypes()
                 .Where(a => a.IsSubclassOf(typeof(BaseModel)));

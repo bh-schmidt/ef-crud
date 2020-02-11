@@ -11,12 +11,12 @@ namespace Tests.Api.Attributes.ExceptionFilterTests
 {
     public class OnException : BaseTests
     {
-        ExceptionFilter ExceptionFilter = null!;
+        ExceptionAttribute ExceptionFilter = null!;
 
         [SetUp]
         public void Setup()
         {
-            ExceptionFilter = new ExceptionFilter();
+            ExceptionFilter = new ExceptionAttribute();
         }
 
         [Test]

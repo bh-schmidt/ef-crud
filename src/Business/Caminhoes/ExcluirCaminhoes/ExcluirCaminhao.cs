@@ -40,10 +40,10 @@ namespace Business.Caminhoes.ExcluirCaminhoes
 
                 return caminhao;
             }
-            catch (Exception ex)
+            catch
             {
                 await unitOfWork.RollbackAsync();
-                throw ex;
+                throw;
             }
         }
 

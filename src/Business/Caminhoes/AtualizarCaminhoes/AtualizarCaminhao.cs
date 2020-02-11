@@ -40,10 +40,10 @@ namespace Business.Caminhoes.AtualizarCaminhoes
 
                 return resultado;
             }
-            catch (Exception ex)
+            catch
             {
                 await unitOfWork.RollbackAsync();
-                throw ex;
+                throw;
             }
         }
 

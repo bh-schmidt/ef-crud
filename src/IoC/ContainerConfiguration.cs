@@ -6,22 +6,19 @@ using System.Reflection;
 
 namespace IoC
 {
-    public class ContainerConfiguration
+    public static class ContainerConfiguration
     {
         public static void Configure(ContainerBuilder builder)
         {
             var businessAssembly = Assembly.GetAssembly(typeof(SampleBusiness));
             var dataAssembly = Assembly.GetAssembly(typeof(SampleData));
 
-            Register(builder, businessAssembly);
-            Register(builder, dataAssembly);
+            Register(builder, businessAssembly!);
+            Register(builder, dataAssembly!);
         }
 
-        private static void Register(ContainerBuilder builder, Assembly? assembly)
+        private static void Register(ContainerBuilder builder, Assembly assembly)
         {
-            if (assembly is null)
-                return;
-
             builder.RegisterAssemblyTypes(assembly)
                 .Where(a =>
                     a.IsClass &&

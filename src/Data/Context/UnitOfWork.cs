@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Storage;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
 using System.Threading.Tasks;
 using Utils.Extensions;
 
@@ -9,9 +10,9 @@ namespace Data.Context
         private readonly EfCrudContext context;
         private IDbContextTransaction? transaction;
 
-        public UnitOfWork() => context = new EfCrudContext();
+        public UnitOfWork(EfCrudContext context) => this.context = context;
 
-        public EfCrudContext Context() => context;
+        public DbContext Context() => context;
 
         public async Task BeginAsync()
         {

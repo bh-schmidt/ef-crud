@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Api.Controllers
 {
     [ApiController]
-    [ExceptionFilter]
+    [ExceptionAttribute]
     [Route("api/[controller]")]
     public abstract class BaseController : ControllerBase
     {

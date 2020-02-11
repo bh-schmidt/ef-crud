@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace Api.Attributes
 {
-    public sealed class ExceptionFilter : ExceptionFilterAttribute
+    public sealed class ExceptionAttribute : ExceptionFilterAttribute
     {
         public override void OnException(ExceptionContext context)
         {
