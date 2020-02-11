@@ -110,3 +110,9 @@ Exemplo: ```http://localhost:5000/api/caminhoes/{3}```
 ## Cobertura de Testes
 
 <img src="https://i.ibb.co/SrVB5Rj/Sonar-Qube.png" >
+
+### Arquivos Ignorados na Cobertura de Código
+1. Tests/**/*
+2. Data/Migrations/*
+3. **/EfCrudContext.cs
+4. **/ConfigureContext.cs
