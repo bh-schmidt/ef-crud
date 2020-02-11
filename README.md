@@ -107,7 +107,7 @@ Exemplo: ```http://localhost:5000/api/caminhoes/{3}```
 ```FH = 1```
 ```FM = 2```
 
-## Cobertura de Testes
+## Cobertura de Código
 
 <img src="https://i.ibb.co/SrVB5Rj/Sonar-Qube.png" >
 
